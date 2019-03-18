@@ -12,18 +12,21 @@ namespace Rectangle
         static void Main()
         {
             Application.EnableVisualStyles();
+
             Application.SetCompatibleTextRenderingDefault(false);
+
             Application.Run(new Form1());
         }
     }
 
     class Main
     {
-        Random rand = new Random();
+        Random rand = new Random(); //Задаем рандом для значения сторон
 
         public void RecTan(int N, TextBox pole)
         {
             Rectangle[] Mass = new Rectangle[N];
+
             float sum = 0;
 
             pole.Text = "";
@@ -31,16 +34,17 @@ namespace Rectangle
             for (int i = 0; i < N; i++)
             {
                 Mass[i] = new Rectangle((float)rand.Next(9) + 1,(float)rand.Next(11) + 1);
-                sum += Mass[i].getSpace();
+
+                sum += Mass[i].getSpace(); //Находим среднюю площадь
             }
-            float Sredn = (float) (sum / N);
+            float Sredn = (float) (sum / N); 
 
             pole.Text += "Больше среднего прямоугольник(и)" + "\r\n";
 
             for (int i = 0; i < N; i++)
             {
 
-                if (Mass[i].getSpace() > Sredn)
+                if (Mass[i].getSpace() > Sredn) //Сравниваем с средней площадью
                 {
                     pole.Text +=  "№"  + (i + 1)  + "\r\n";
                 }
@@ -49,6 +53,7 @@ namespace Rectangle
             pole.Text += "\r\n" + "Информация о всех прямоугольниках:" + "\r\n";
 
             for (int i = 0; i < N; i++)
+
                 pole.Text += "\r\n" + "Прямоугольник №" + (i + 1) + "\r\n" + Mass[i].getInfo() + "\r\n";
         }
 
@@ -60,9 +65,10 @@ namespace Rectangle
 
             pole.Text +="Кубы:";
 
-            for (int i = 0; i < M; i++)
+            for (int i = 0; i < M; i++) //Проверка на равность сторон
             {
                 Mass[i] = new Parallelepiped((float)rand.Next(5) + 1, (float)rand.Next(5) + 1, (float)rand.Next(5) + 1);
+
                 if (Mass[i].getLenght() == Mass[i].getWight() && Mass[i].getLenght() == Mass[i].getHeight())
                 {
                     pole.Text += "\r\n" + "№" + (i + 1);
@@ -80,10 +86,13 @@ namespace Rectangle
     class Rectangle
     {
         public float side1; //Стороны прямоугольника
+
         public float side2;
+
         public Rectangle(float side1,float side2)
         {
             this.side1 = side1;
+
             this.side2 = side2;
         }
         public float getLenght() //Узнать длинну

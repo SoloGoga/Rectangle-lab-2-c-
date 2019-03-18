@@ -31,7 +31,7 @@ namespace Rectangle
 
         private void button2_Click(object sender, EventArgs e)
         {
-            YaSdelal.Kub((int)numericUpDown2.Value, textBox1);
+            YaSdelal.Kub((int) numericUpDown2.Value, textBox1);
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
